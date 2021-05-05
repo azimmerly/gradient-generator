@@ -1,0 +1,42 @@
+{
+  "name": "gradient-generator",
+  "private": true,
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "Andrew Zimmerly",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/styles": "^4.11.4",
+    "react": "^17.0.2",
+    "react-color": "^2.19.3",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azimmerly/gradient-generator"
+  }
+}

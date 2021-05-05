@@ -1,0 +1,36 @@
+:root {
+  --color-black: #444;
+  --color-white: #fff;
+
+  --font-primary: "Roboto", sans-serif;
+  --font-secondary: "Lobster", cursive;
+
+  --font-size-large: clamp(4rem, 5vw, 6rem);
+  --font-size-medium: clamp(1rem, 1.5vw, 1.3rem);
+  --font-size-small: clamp(0.8rem, 1.2vw, 0.9rem);
+}
+
+::selection {
+  color: #fff;
+  background-color: #8060ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+h1 {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}

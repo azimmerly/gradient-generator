@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# production
+/dist
+
+# misc
+.DS_Store
+
+# debug
+npm-debug.log*
+
+# env files
+.env*
+.env*.local
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

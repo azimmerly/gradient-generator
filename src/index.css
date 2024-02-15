@@ -1,0 +1,25 @@
+:root {
+  --font-primary: "Roboto", sans-serif;
+  --font-heading: "Pacifico", cursive;
+  --font-code: "Fira Code", monospace;
+
+  --color-black: #444;
+  --color-white: #fff;
+
+  --border-radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: var(--font-primary);
+}

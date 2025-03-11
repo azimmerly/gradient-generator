@@ -30,10 +30,11 @@ export const Heading = styled.h1<{ gradient: Gradient }>`
     `linear-gradient(${direction.value}, ${colors[1]}, ${colors[2]})`};
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 1.8;
+  line-height: 1.4;
   font-family: var(--font-heading);
   font-size: 52px;
   text-align: center;
+  min-height: 160px;
   width: 100%;
   max-width: 60rem;
 

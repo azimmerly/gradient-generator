@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled";
 
 export const Container = styled.div`
   color: var(--color-white);
@@ -14,7 +14,7 @@ export const GradientText = styled.p`
   font-family: var(--font-code);
   color: var(--color-white);
   max-width: 52rem;
-  text-align: left;
+  text-align: center;
   min-height: 4rem;
   font-size: 16px;
 

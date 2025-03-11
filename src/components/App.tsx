@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { ColorOptions, GradientDisplay, Wave } from "components";
 import type {
@@ -24,21 +24,27 @@ const initialGradient: Gradient = {
 export const App = () => {
   const [gradient, setGradient] = useState(initialGradient);
 
-  const updateDirection: UpdateDirection = (newDirection) => {
-    setGradient({ ...gradient, direction: newDirection });
-  };
+  const updateDirection: UpdateDirection = useCallback(
+    (newDirection) => {
+      setGradient({ ...gradient, direction: newDirection });
+    },
+    [gradient, setGradient],
+  );
 
-  const updateFormat: UpdateFormat = (newFormat) => {
-    setGradient({ ...gradient, format: newFormat });
-  };
+  const updateFormat: UpdateFormat = useCallback(
+    (newFormat) => {
+      setGradient({ ...gradient, format: newFormat });
+    },
+    [gradient, setGradient],
+  );
 
-  const updateColor: UpdateColor = (colorNum, newColor) => {
+  const updateColor: UpdateColor = useCallback((colorNum, newColor) => {
     setGradient((prevGradient) => {
       const updatedGradient = { ...prevGradient };
       updatedGradient.colors[colorNum] = newColor;
       return updatedGradient;
     });
-  };
+  }, []);
 
   return (
     <Container>

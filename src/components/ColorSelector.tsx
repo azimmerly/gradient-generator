@@ -25,10 +25,12 @@ export const ColorSelector = ({
 
   useEffect(() => {
     updateColor(colorNum, currentColor);
-  }, [currentColor]);
+  }, [colorNum, currentColor, updateColor]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    e.key === "Escape" && setIsOpen(false);
+    if (e.key === "Escape") {
+      setIsOpen(false);
+    }
   };
 
   return (

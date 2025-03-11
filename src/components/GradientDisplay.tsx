@@ -1,5 +1,5 @@
+import copy from "copy-to-clipboard";
 import { useState } from "react";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { FaCopy } from "react-icons/fa6";
 
 import { FormatSelector, Toast } from "components";
@@ -16,23 +16,11 @@ export const GradientDisplay = ({
   gradient,
   updateFormat,
 }: GradientDisplayProps) => {
-  const [isToast, setIsToast] = useState(false);
+  const [toast, setToast] = useState(false);
 
   const { direction, format, colors } = gradient;
   const hexColor1 = colors[1];
   const hexColor2 = colors[2];
-
-  const handleToast = () => {
-    setIsToast(true);
-
-    const timeout = setTimeout(() => {
-      setIsToast(false);
-    }, 3000);
-
-    return () => {
-      clearTimeout(timeout);
-    };
-  };
 
   const COLOR_MAP = {
     hex: {
@@ -51,17 +39,26 @@ export const GradientDisplay = ({
 
   const gradientText = `background: linear-gradient(${direction.value}, ${COLOR_MAP[format][1]}, ${COLOR_MAP[format][2]});`;
 
+  const handleCopy = () => {
+    copy(gradientText);
+    setToast(true);
+    const timeout = setTimeout(() => {
+      setToast(false);
+    }, 3000);
+    return () => {
+      clearTimeout(timeout);
+    };
+  };
+
   return (
     <Container>
       <FormatSelector gradient={gradient} updateFormat={updateFormat} />
       <GradientText>{gradientText}</GradientText>
-      <CopyToClipboard text={gradientText} onCopy={handleToast}>
-        <StyledButton disabled={isToast}>
-          <FaCopy />
-          Copy CSS
-        </StyledButton>
-      </CopyToClipboard>
-      {isToast && <Toast />}
+      <StyledButton onClick={handleCopy}>
+        <FaCopy />
+        Copy CSS
+      </StyledButton>
+      {toast && <Toast />}
     </Container>
   );
 };

@@ -1,25 +1,30 @@
-:root {
-  --font-primary: "Roboto", sans-serif;
+@import "tailwindcss";
+
+@theme {
   --font-heading: "Pacifico", cursive;
+  --font-body: "Inter", sans-serif;
   --font-code: "Fira Code", monospace;
-
-  --color-black: #444;
-  --color-white: #fff;
-
-  --border-radius: 5px;
+  --color-offwhite: #fcfdfe;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
+@layer utilities {
+  @keyframes scale-bounce {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.04);
+    }
+    60% {
+      transform: scale(0.96);
+    }
+    90% {
+      transform: scale(1.02);
+    }
+  }
 
-html {
-  box-sizing: border-box;
-}
-
-body {
-  overflow: hidden;
-  font-family: var(--font-primary);
+  .animate-scale-bounce {
+    animation: scale-bounce 400ms ease-in-out;
+  }
 }

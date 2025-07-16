@@ -1,3 +1,3 @@
 # Gradient Generator
 
-A simple CSS color gradient generator. You can customize the colors and direction of the gradient, and the resulting CSS code is available in HEX, RGB, or HSL formats for easy copying to the clipboard.
+A simple and intuitive CSS gradient generator. Gradients can be customized using draggable color stops and set to either linear or radial style, with a live preview. The generated CSS code can then be copied to the clipboard.

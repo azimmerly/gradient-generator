@@ -6,7 +6,7 @@ import { TypeSelect } from "@/components/TypeSelect";
 
 export const GradientControls = () => (
   <div className="bg-offwhite flex min-h-80 w-full justify-center">
-    <div className="flex w-full max-w-7xl flex-col items-center gap-3 p-2">
+    <div className="flex w-full max-w-7xl flex-col items-center gap-3 p-3">
       <div className="flex gap-1 py-4">
         <img loading="eager" src={logoImage} className="size-8 sm:size-10" />
         <h1 className="font-heading h-14 w-fit bg-clip-text text-2xl font-bold sm:text-4xl">
@@ -18,7 +18,7 @@ export const GradientControls = () => (
           <TypeSelect />
           <AngleSelect />
         </div>
-        <div className="flex justify-center sm:px-12">
+        <div className="flex justify-center sm:px-12 sm:pt-1">
           <ColorStops />
         </div>
         <div className="flex items-center justify-center sm:px-12">

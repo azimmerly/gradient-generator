@@ -14,17 +14,17 @@
       transform: scale(1);
     }
     40% {
-      transform: scale(1.04);
+      transform: scale(1.02);
     }
     60% {
-      transform: scale(0.96);
+      transform: scale(0.98);
     }
     90% {
-      transform: scale(1.02);
+      transform: scale(1.01);
     }
   }
 
   .animate-scale-bounce {
-    animation: scale-bounce 400ms ease-in-out;
+    animation: scale-bounce 350ms ease-out;
   }
 }

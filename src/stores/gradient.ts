@@ -26,9 +26,9 @@ type GradientStore = {
 };
 
 const initialStops: ColorStop[] = [
-  { id: nanoid(), color: "#f76a98", position: 0 },
-  { id: nanoid(), color: "#8160ff", position: 40 },
-  { id: nanoid(), color: "#259fd7", position: 80 },
+  { id: nanoid(), color: "#2fb1bf", position: 0 },
+  { id: nanoid(), color: "#eafbca", position: 40 },
+  { id: nanoid(), color: "#6082f8", position: 80 },
 ];
 
 export const useGradientStore = create<GradientStore>((set) => ({

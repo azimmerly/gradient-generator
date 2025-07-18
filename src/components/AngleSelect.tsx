@@ -41,7 +41,7 @@ export const AngleSelect = () => {
     >
       <Label
         className={twMerge(
-          "text-center text-sm sm:text-left",
+          "hidden text-center text-sm sm:inline",
           isDisabled ? "text-gray-400" : "text-gray-500",
         )}
       >

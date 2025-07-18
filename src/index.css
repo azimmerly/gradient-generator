@@ -24,7 +24,30 @@
     }
   }
 
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0) rotate(0deg);
+    }
+    20% {
+      transform: translateX(-1px) rotate(-4deg);
+    }
+    40% {
+      transform: translateX(1px) rotate(4deg);
+    }
+    60% {
+      transform: translateX(-1px) rotate(-2deg);
+    }
+    80% {
+      transform: translateX(1px) rotate(2deg);
+    }
+  }
+
   .animate-scale-bounce {
     animation: scale-bounce 350ms ease-out;
+  }
+
+  .animate-shake {
+    animation: shake 350ms ease-out;
   }
 }

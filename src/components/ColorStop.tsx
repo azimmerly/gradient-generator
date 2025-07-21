@@ -63,12 +63,12 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
         <div
           {...listeners}
           {...attributes}
-          className="-mr-1 cursor-grab rounded"
+          className="-mr-1 cursor-grab rounded p-0.5 text-gray-400 transition hover:text-gray-500 active:cursor-grabbing"
         >
-          <ChevronUpDownIcon className="size-5 text-gray-400" />
+          <ChevronUpDownIcon className="size-5" />
         </div>
         <div
-          className="size-7 rounded-md outline-1 outline-gray-300"
+          className="size-7 rounded outline-1 outline-gray-300"
           style={{ background: stop.color }}
         />
         <HexColorInput
@@ -89,7 +89,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
         disabled={disableRemove}
         onClick={() => removeStop(stop.id)}
         className={twMerge(
-          "ml-1 h-fit rounded-full",
+          "ml-1.5 h-fit rounded-full",
           disableRemove ? "cursor-not-allowed" : "cursor-pointer",
         )}
       >

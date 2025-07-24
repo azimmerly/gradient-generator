@@ -52,7 +52,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
         transform: CSS.Transform.toString(transform),
       }}
       className={twMerge(
-        "flex w-fit items-center gap-1 rounded-lg px-2.5 py-2",
+        "flex w-fit items-center gap-1 rounded-lg px-3 py-2",
         selectedStop === stop.id && "bg-gray-200 shadow-xs",
       )}
     >

@@ -27,8 +27,14 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
       })),
     );
 
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: stop.id });
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: stop.id });
 
   const handleUpdatePosition = (e: React.ChangeEvent<HTMLInputElement>) => {
     const num = Number(e.target.value);
@@ -43,6 +49,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
   };
 
   const disableRemove = stops.length <= 2;
+  const isSelected = selectedStop === stop.id;
 
   return (
     <li
@@ -53,17 +60,19 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
       }}
       className={twMerge(
         "flex w-fit items-center gap-1 rounded-lg px-3 py-2",
-        selectedStop === stop.id && "bg-gray-200 shadow-xs",
+        isSelected && "bg-gray-200 shadow-xs",
+        isSelected && isDragging && "shadow-md",
+        isDragging && "z-50",
       )}
     >
       <div
+        className="flex items-center gap-3"
         onClick={() => setSelectedStop(stop.id)}
-        className="flex cursor-pointer items-center gap-3 transition"
       >
         <div
           {...listeners}
           {...attributes}
-          className="-mr-1 cursor-grab rounded p-0.5 text-gray-400 transition hover:text-gray-500 active:cursor-grabbing"
+          className="-mr-1 cursor-grab touch-none rounded p-0.5 text-gray-400 transition hover:text-gray-500 active:cursor-grabbing"
         >
           <ChevronUpDownIcon className="size-5" />
         </div>
@@ -74,19 +83,21 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
         <HexColorInput
           prefixed
           name="hex-color"
+          disabled={isDragging}
           color={stop.color}
           onChange={handleUpdateColor}
           className="font-code w-22 rounded bg-white px-2 py-1 text-center text-sm font-medium outline-1 outline-gray-300"
         />
         <Input
           name="position"
-          className="w-9 cursor-text rounded bg-white p-1 text-center text-sm font-medium outline-1 outline-gray-300"
+          disabled={isDragging}
           value={stop.position}
           onChange={handleUpdatePosition}
+          className="w-9 cursor-text rounded bg-white p-1 text-center text-sm font-medium outline-1 outline-gray-300"
         />
       </div>
       <Button
-        disabled={disableRemove}
+        disabled={disableRemove || isDragging}
         onClick={() => removeStop(stop.id)}
         className={twMerge(
           "ml-1.5 h-fit rounded-full",

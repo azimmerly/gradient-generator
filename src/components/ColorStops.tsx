@@ -52,7 +52,7 @@ export const ColorStops = () => {
       {stops.length < 4 && (
         <Button
           onClick={addStop}
-          className="mt-3 flex w-fit cursor-pointer items-center gap-0.5 pr-2 text-sm font-semibold text-blue-500 transition hover:text-blue-600"
+          className="mt-2 flex w-fit cursor-pointer items-center gap-0.5 text-sm font-semibold text-blue-500 transition hover:text-blue-600 lg:mt-2.5"
         >
           <PlusIcon strokeWidth={2} className="size-4" />
           Add color

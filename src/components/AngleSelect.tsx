@@ -41,7 +41,7 @@ export const AngleSelect = () => {
     >
       <Label
         className={twMerge(
-          "hidden text-center text-sm sm:inline",
+          "hidden text-center text-sm lg:inline",
           isDisabled ? "text-gray-400" : "text-gray-500",
         )}
       >
@@ -50,7 +50,7 @@ export const AngleSelect = () => {
       <div className="relative">
         <ListboxButton
           className={twMerge(
-            "group relative w-42 rounded-md py-1.5 pr-10 pl-3 text-left shadow-xs ring-1 ring-gray-200 ring-inset focus:ring-2 focus:ring-blue-600 focus:outline-hidden sm:text-sm/6",
+            "group relative w-40 rounded-md py-1.5 pr-10 pl-3 text-left text-sm/6 shadow-xs ring-1 ring-gray-200 ring-inset focus:ring-2 focus:ring-blue-600 focus:outline-hidden",
             isDisabled ? "bg-gray-100 text-gray-400" : "bg-white",
           )}
         >
@@ -64,7 +64,7 @@ export const AngleSelect = () => {
         </ListboxButton>
         <ListboxOptions
           transition
-          className="absolute z-10 mt-1 w-full overflow-auto rounded-md bg-white p-1 shadow-lg ring-1 ring-gray-200/70 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
+          className="absolute z-10 mt-1 w-full overflow-auto rounded-md bg-white p-1 text-sm shadow-lg ring-1 ring-gray-200/70 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0"
         >
           {options.map((option, i) => (
             <ListboxOption

@@ -24,7 +24,7 @@ export const ColorPicker = () => {
     <HexColorPicker
       color={currentStop?.color}
       onChange={handleChange}
-      className="max-h-44 max-w-44"
+      className="mt-2 max-h-44 max-w-44 lg:mt-0"
     />
   );
 };

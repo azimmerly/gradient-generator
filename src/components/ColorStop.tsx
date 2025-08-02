@@ -107,8 +107,10 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
         <XMarkIcon
           strokeWidth={2}
           className={twMerge(
-            "size-5 text-gray-400 transition",
-            !disableRemove && "hover:text-gray-500",
+            "size-5 transition",
+            disableRemove
+              ? "text-gray-400/60"
+              : "text-gray-400 hover:text-gray-500",
           )}
         />
       </Button>

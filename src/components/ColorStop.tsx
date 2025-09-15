@@ -1,6 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { Button, Input } from "@headlessui/react";
+import { Button, Field, Input } from "@headlessui/react";
 import { ChevronUpDownIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { HexColorInput } from "react-colorful";
 import { twMerge } from "tailwind-merge";
@@ -69,36 +69,47 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
         className="flex items-center gap-3"
         onClick={() => setSelectedStop(stop.id)}
       >
-        <div
+        <Button
           {...listeners}
           {...attributes}
+          aria-label="grab color stop"
           className="-mr-1 cursor-grab touch-none rounded p-0.5 text-gray-400 transition hover:text-gray-500 active:cursor-grabbing"
         >
           <ChevronUpDownIcon className="size-5" />
-        </div>
+        </Button>
         <div
           className="size-7 rounded outline-1 outline-gray-300"
           style={{ background: stop.color }}
         />
-        <HexColorInput
-          prefixed
-          name="hex-color"
-          disabled={isDragging}
-          color={stop.color}
-          onChange={handleUpdateColor}
-          className="font-code w-22 rounded bg-white px-2 py-1 text-center text-sm font-medium outline-1 outline-gray-300"
-        />
-        <Input
-          name="position"
-          disabled={isDragging}
-          value={stop.position}
-          onChange={handleUpdatePosition}
-          className="w-9 cursor-text rounded bg-white p-1 text-center text-sm font-medium outline-1 outline-gray-300"
-        />
+        <Field className="font-code relative text-sm font-medium">
+          <span className="pointer-events-none absolute top-1/2 left-2 -translate-y-1/2 text-gray-500/90">
+            #
+          </span>
+          <HexColorInput
+            name="color hex"
+            disabled={isDragging}
+            color={stop.color}
+            onChange={handleUpdateColor}
+            className="w-20 rounded bg-white p-1 pl-5 text-left outline-1 outline-gray-300 transition focus:outline-gray-500"
+          />
+        </Field>
+        <Field className="font-code relative text-sm font-medium">
+          <Input
+            name="color position"
+            disabled={isDragging}
+            value={stop.position}
+            onChange={handleUpdatePosition}
+            className="w-12.5 cursor-text rounded bg-white p-1 pr-5 text-right outline-1 outline-gray-300 transition focus:outline-gray-500"
+          />
+          <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-gray-500/90">
+            %
+          </span>
+        </Field>
       </div>
       <Button
         disabled={disableRemove || isDragging}
         onClick={() => removeStop(stop.id)}
+        aria-label="remove color stop"
         className={twMerge(
           "ml-1.5 h-fit rounded-full",
           disableRemove ? "cursor-not-allowed" : "cursor-pointer",

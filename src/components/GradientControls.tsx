@@ -1,7 +1,7 @@
 import logoImage from "@/assets/brush.png";
-import { AngleSelect } from "@/components/AngleSelect";
 import { ColorPicker } from "@/components/ColorPicker";
 import { ColorStops } from "@/components/ColorStops";
+import { DirectionSelect } from "@/components/DirectionSelect";
 import { RandomizeButton } from "@/components/RandomizeButton";
 import { TypeSelect } from "@/components/TypeSelect";
 
@@ -21,7 +21,7 @@ export const GradientControls = () => (
       <div className="flex flex-col gap-7 divide-gray-300 pb-4 lg:h-52 lg:flex-row lg:gap-0 lg:divide-x lg:pb-2">
         <div className="-mt-2 flex flex-col items-center justify-center gap-3 lg:mt-0 lg:gap-4 lg:px-12">
           <TypeSelect />
-          <AngleSelect />
+          <DirectionSelect />
           <RandomizeButton />
         </div>
         <div className="flex justify-center lg:px-12 lg:pt-1">

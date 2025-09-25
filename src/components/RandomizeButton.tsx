@@ -37,10 +37,10 @@ export const RandomizeButton = () => {
       disabled={busy}
       onClick={handleRandomize}
       className={twMerge(
-        "flex w-fit transform-gpu items-center gap-1 rounded-md p-1 text-[13px] font-semibold transition will-change-transform hover:scale-103",
+        "flex w-fit transform-gpu items-center gap-1 rounded-md p-1 text-sm font-semibold transition will-change-transform hover:text-gray-600",
         busy
           ? "cursor-default text-gray-600"
-          : "cursor-pointer active:scale-99",
+          : "cursor-pointer active:scale-96",
       )}
     >
       <img

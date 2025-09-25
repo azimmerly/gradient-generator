@@ -18,7 +18,7 @@ export const TypeSelect = () => {
           "w-18 rounded-l-md bg-white px-3 py-2 ring-1 ring-gray-300 transition ring-inset",
           type === "linear"
             ? "bg-gray-100 font-semibold"
-            : "bg-white hover:bg-gray-100/30",
+            : "cursor-pointer bg-white hover:bg-gray-100/30",
         )}
       >
         Linear
@@ -30,7 +30,7 @@ export const TypeSelect = () => {
           "-ml-px w-18 rounded-r-md bg-white px-3 py-2 ring-1 ring-gray-300 transition ring-inset",
           type === "radial"
             ? "bg-gray-100 font-semibold"
-            : "bg-white hover:bg-gray-100/30",
+            : "cursor-pointer bg-white hover:bg-gray-100/30",
         )}
       >
         Radial

@@ -82,11 +82,14 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
           style={{ background: stop.color }}
         />
         <Field className="font-code relative text-sm font-medium">
+          <label className="sr-only" htmlFor={`color-${stop.id}`}>
+            Color hex
+          </label>
           <span className="pointer-events-none absolute top-1/2 left-2 -translate-y-1/2 text-gray-500/90">
             #
           </span>
           <HexColorInput
-            name="color hex"
+            id={`color-${stop.id}`}
             disabled={isDragging}
             color={stop.color}
             onChange={handleUpdateColor}
@@ -94,8 +97,11 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
           />
         </Field>
         <Field className="font-code relative text-sm font-medium">
+          <label className="sr-only" htmlFor={`position-${stop.id}`}>
+            Color position
+          </label>
           <Input
-            name="color position"
+            id={`position-${stop.id}`}
             disabled={isDragging}
             value={stop.position}
             onChange={handleUpdatePosition}

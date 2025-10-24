@@ -38,26 +38,28 @@ export const ColorStops = () => {
   };
 
   return (
-    <ul className="flex flex-col items-center gap-1">
+    <div className="flex flex-col items-center gap-1">
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <SortableContext
           items={stops.map(({ id }) => id)}
           strategy={verticalListSortingStrategy}
         >
-          {stops.map((stop) => (
-            <ColorStop key={stop.id} stop={stop} />
-          ))}
+          <ul className="flex flex-col items-center gap-1">
+            {stops.map((stop) => (
+              <ColorStop key={stop.id} stop={stop} />
+            ))}
+          </ul>
         </SortableContext>
       </DndContext>
       {stops.length < 4 && (
         <Button
           onClick={addStop}
-          className="mt-2 flex w-fit cursor-pointer items-center gap-0.5 text-sm font-semibold text-blue-500 transition hover:text-blue-600 lg:mt-2.5"
+          className="mt-2 flex w-fit cursor-pointer items-center gap-0.5 text-sm font-semibold text-blue-600 transition-opacity hover:opacity-80 lg:mt-2.5"
         >
           <PlusIcon strokeWidth={2} className="size-4" />
           Add color
         </Button>
       )}
-    </ul>
+    </div>
   );
 };

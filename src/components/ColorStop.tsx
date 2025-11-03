@@ -122,7 +122,6 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
         )}
       >
         <XMarkIcon
-          strokeWidth={2}
           className={twMerge(
             "size-5 transition",
             disableRemove

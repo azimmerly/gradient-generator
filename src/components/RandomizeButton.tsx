@@ -44,10 +44,11 @@ export const RandomizeButton = () => {
       )}
     >
       <img
-        alt="dice"
+        alt=""
+        aria-hidden="true"
         src={diceImage}
         className={twMerge(
-          "size-4.5 transform-gpu will-change-transform",
+          "size-[19px] transform-gpu will-change-transform",
           busy && "animate-shake",
         )}
       />

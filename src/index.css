@@ -7,6 +7,12 @@
   --color-offwhite: #fcfdfe;
 }
 
+@layer base {
+  body {
+    overflow-x: hidden;
+  }
+}
+
 @layer utilities {
   @keyframes scale-bounce {
     0%,

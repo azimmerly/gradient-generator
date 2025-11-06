@@ -37,10 +37,8 @@ export const RandomizeButton = () => {
       disabled={busy}
       onClick={handleRandomize}
       className={twMerge(
-        "flex w-fit transform-gpu items-center gap-1 rounded-md p-1 text-sm font-semibold transition will-change-transform hover:text-gray-600",
-        busy
-          ? "cursor-default text-gray-600"
-          : "cursor-pointer active:scale-96",
+        "mt-0.5 flex w-fit items-center gap-1.5 rounded-md bg-white px-3 py-1.5 text-[13px] font-semibold text-gray-700 shadow-xs ring-1 ring-gray-200 transition will-change-transform ring-inset hover:bg-gray-50",
+        busy ? "cursor-default bg-gray-50" : "cursor-pointer active:scale-99",
       )}
     >
       <img
@@ -48,7 +46,7 @@ export const RandomizeButton = () => {
         aria-hidden="true"
         src={diceImage}
         className={twMerge(
-          "size-[19px] transform-gpu will-change-transform",
+          "size-[17px] transform-gpu will-change-transform",
           busy && "animate-shake",
         )}
       />

@@ -61,7 +61,7 @@ export const DirectionSelect = () => {
       <div className="relative">
         <ListboxButton
           className={twMerge(
-            "group relative w-45 rounded-md py-1.5 pr-10 pl-3 text-left text-sm/6 shadow-xs ring-1 ring-gray-200 ring-inset focus:ring-2 focus:ring-blue-600 focus:outline-hidden",
+            "group relative w-45 rounded-md py-1.5 pr-10 pl-3 text-left text-sm/6 shadow-xs ring-1 ring-gray-200 ring-inset",
             isDisabled ? "bg-gray-100 text-gray-400" : "bg-white",
           )}
         >

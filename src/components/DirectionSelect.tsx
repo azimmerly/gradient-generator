@@ -62,7 +62,7 @@ export const DirectionSelect = () => {
         <ListboxButton
           className={twMerge(
             "group relative w-45 rounded-md py-1.5 pr-10 pl-3 text-left text-sm/6 shadow-xs ring-1 ring-gray-200 ring-inset",
-            isDisabled ? "bg-gray-100 text-gray-400" : "bg-white",
+            isDisabled ? "bg-gray-100 text-gray-400 opacity-80" : "bg-white",
           )}
         >
           <div className="flex items-center gap-1.5">
@@ -86,7 +86,7 @@ export const DirectionSelect = () => {
               <ListboxOption
                 key={option.value}
                 value={option}
-                className="group relative flex items-center gap-1.5 rounded-sm px-2 py-1.5 select-none data-focus:bg-blue-600"
+                className="group relative flex items-center gap-1.5 rounded-md px-2 py-1.5 select-none data-focus:bg-blue-600"
               >
                 <OptionIcon className="size-4 text-gray-400 group-data-focus:text-white" />
                 <span className="block truncate font-normal group-data-focus:text-white group-data-selected:font-semibold">

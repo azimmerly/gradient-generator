@@ -61,8 +61,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
       className={twMerge(
         "flex w-fit items-center gap-1 rounded-lg px-3 py-2",
         isSelected && "bg-gray-200 shadow-xs",
-        isSelected && isDragging && "shadow-md",
-        isDragging && "z-50",
+        isDragging && (isSelected ? "z-50 shadow-md" : "z-50"),
       )}
     >
       <div
@@ -78,14 +77,14 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
           <ChevronUpDownIcon className="size-5" />
         </Button>
         <div
-          className="size-7 rounded outline-1 outline-gray-300"
+          className="size-7 rounded outline-1 outline-gray-200"
           style={{ background: stop.color }}
         />
         <Field className="font-code relative text-sm font-medium">
           <label className="sr-only" htmlFor={`color-${stop.id}`}>
             Color hex
           </label>
-          <span className="pointer-events-none absolute top-1/2 left-2 -translate-y-1/2 text-gray-500/90">
+          <span className="pointer-events-none absolute top-1/2 left-2 -translate-y-1/2 text-gray-500/80">
             #
           </span>
           <HexColorInput
@@ -93,7 +92,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
             disabled={isDragging}
             color={stop.color}
             onChange={handleUpdateColor}
-            className="w-20 rounded bg-white p-1 pl-5 text-left outline-1 outline-gray-300 transition focus:outline-gray-500"
+            className="w-20 rounded bg-white p-1 pl-5 text-left outline-1 outline-gray-200 transition focus:outline-gray-500"
           />
         </Field>
         <Field className="font-code relative text-sm font-medium">
@@ -105,9 +104,9 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
             disabled={isDragging}
             value={stop.position}
             onChange={handleUpdatePosition}
-            className="w-12.5 cursor-text rounded bg-white p-1 pr-5 text-right outline-1 outline-gray-300 transition focus:outline-gray-500"
+            className="w-12.5 cursor-text rounded bg-white p-1 pr-5 text-right outline-1 outline-gray-200 transition focus:outline-gray-500"
           />
-          <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-gray-500/90">
+          <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-gray-500/80">
             %
           </span>
         </Field>

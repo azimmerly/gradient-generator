@@ -45,16 +45,13 @@ export const GradientPreview = () => {
             <>
               <CheckCircleIcon
                 strokeWidth={2.5}
-                className="size-[17px] text-emerald-500"
+                className="size-4.25 text-emerald-500"
               />
               Copied CSS code!
             </>
           ) : (
             <>
-              <DocumentDuplicateIcon
-                strokeWidth={2.1}
-                className="size-[17px]"
-              />
+              <DocumentDuplicateIcon strokeWidth={2.1} className="size-4.25" />
               Copy to clipboard
             </>
           )}

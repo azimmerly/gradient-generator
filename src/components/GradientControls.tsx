@@ -12,7 +12,7 @@ export const GradientControls = () => (
         <img
           alt="logo"
           src={logoImage}
-          className="mt-0.5 size-[34px] lg:mt-0 lg:size-10"
+          className="mt-0.5 size-8.5 lg:mt-0 lg:size-10"
         />
         <h1 className="font-heading h-14 w-fit bg-clip-text text-[26px] font-bold lg:text-4xl">
           Gradient Generator

@@ -27,7 +27,7 @@ export const GradientPreview = () => {
       className="grid min-h-110 w-full flex-1 place-items-center p-2.5"
     >
       <div className="-mt-8 flex max-w-lg flex-col items-center gap-4 rounded-xl bg-gray-950/40 p-4.5 shadow backdrop-blur-md lg:-mt-16 lg:gap-7 lg:p-7">
-        <pre className="font-code text-[15px] font-medium text-wrap text-shadow-xs lg:text-base">
+        <pre className="font-code text-[15px] text-wrap text-shadow-xs lg:text-base">
           <span className="text-orange-200">background: </span>
           <span className="text-white">{gradientCSS};</span>
         </pre>

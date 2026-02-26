@@ -80,7 +80,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
           className="size-7 rounded outline-1 outline-gray-200"
           style={{ background: stop.color }}
         />
-        <Field className="font-code relative text-sm font-medium">
+        <Field className="font-code relative text-sm">
           <label className="sr-only" htmlFor={`color-${stop.id}`}>
             Color hex
           </label>
@@ -95,7 +95,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
             className="w-20 rounded bg-white p-1 pl-5 text-left outline-1 outline-gray-200 transition focus:outline-gray-500"
           />
         </Field>
-        <Field className="font-code relative text-sm font-medium">
+        <Field className="font-code relative text-sm">
           <label className="sr-only" htmlFor={`position-${stop.id}`}>
             Color position
           </label>

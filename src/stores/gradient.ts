@@ -1,22 +1,22 @@
 import { create } from "zustand";
 
+import type {
+  ColorStop,
+  DirectionAngle,
+  GradientType,
+  RadialPosition,
+} from "@/types";
 import { getRandomColor } from "@/utils/getRandomColor";
-
-export type GradientType = "linear" | "radial";
-
-export type ColorStop = {
-  id: string;
-  color: string;
-  position: number;
-};
 
 type GradientStore = {
   type: GradientType;
-  angle: number;
+  directionAngle: DirectionAngle;
+  radialPosition: RadialPosition;
   stops: ColorStop[];
   selectedStop: string;
   setType: (type: GradientType) => void;
-  setAngle: (angle: number) => void;
+  setDirectionAngle: (angle: DirectionAngle) => void;
+  setRadialPosition: (position: RadialPosition) => void;
   setSelectedStop: (id: string) => void;
   updateStop: (id: string, partialStop: Partial<ColorStop>) => void;
   addStop: () => void;
@@ -32,11 +32,13 @@ const initialStops: ColorStop[] = [
 
 export const useGradientStore = create<GradientStore>((set) => ({
   type: "linear",
-  angle: 135,
+  directionAngle: 135,
+  radialPosition: "center",
   stops: initialStops,
   selectedStop: initialStops[0].id,
   setType: (type) => set({ type }),
-  setAngle: (angle) => set({ angle }),
+  setDirectionAngle: (directionAngle) => set({ directionAngle }),
+  setRadialPosition: (radialPosition) => set({ radialPosition }),
   setSelectedStop: (id) => set({ selectedStop: id }),
   updateStop: (id, partialStop) => {
     set((state) => ({

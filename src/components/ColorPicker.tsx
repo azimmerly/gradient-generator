@@ -13,7 +13,7 @@ export const ColorPicker = () => {
     })),
   );
 
-  const debouncedUpdateStop = useDebouncedCallback(updateStop, 100);
+  const debouncedUpdateStop = useDebouncedCallback(updateStop, 150);
   const handleChange = (color: string) => {
     debouncedUpdateStop(selectedStop, { color });
   };

@@ -3,8 +3,10 @@ import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import diceImage from "@/assets/dice.png";
+import { DIRECTION_ANGLES, GRADIENT_TYPES, RADIAL_POSITIONS } from "@/consts";
 import { useGradientStore } from "@/stores/gradient";
 import { getRandomColor } from "@/utils/getRandomColor";
+import { pickRandom } from "@/utils/pickRandom";
 
 export const RandomizeButton = () => {
   const [busy, setBusy] = useState(false);
@@ -15,10 +17,8 @@ export const RandomizeButton = () => {
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setBusy(false), 400);
 
-    const angles = [0, 45, 90, 135, 180, 225, 270, 315] as const;
-    const numStops = Math.random() > 0.5 ? 3 : 4;
+    const numStops = pickRandom([2, 3, 4]);
     const positions = [0, 40, 80, 100].slice(0, numStops);
-
     const newStops = positions.map((position) => ({
       id: crypto.randomUUID(),
       color: getRandomColor(),
@@ -26,8 +26,9 @@ export const RandomizeButton = () => {
     }));
 
     useGradientStore.setState({
-      angle: angles[Math.floor(Math.random() * angles.length)],
-      type: Math.random() > 0.5 ? "linear" : "radial",
+      type: pickRandom(GRADIENT_TYPES),
+      directionAngle: pickRandom(DIRECTION_ANGLES),
+      radialPosition: pickRandom(RADIAL_POSITIONS),
       stops: newStops,
       selectedStop: newStops[0].id,
     });
@@ -38,9 +39,9 @@ export const RandomizeButton = () => {
       disabled={busy}
       onClick={handleRandomize}
       className={twMerge(
-        "mt-0.5 flex w-fit items-center gap-1.5 rounded-md bg-white px-4 py-2 text-[13px] font-semibold text-gray-700 shadow-xs ring-1 ring-gray-200 transition will-change-transform ring-inset hover:bg-gray-50",
+        "mt-0.5 flex w-fit items-center gap-1.5 rounded-md bg-white px-4 py-2 text-[13px] font-semibold text-mist-700 shadow-xs ring-1 ring-mist-200 transition will-change-transform ring-inset hover:bg-mist-50",
         busy
-          ? "cursor-default bg-gray-50"
+          ? "cursor-default bg-mist-50"
           : "cursor-pointer active:translate-y-px active:scale-99",
       )}
     >

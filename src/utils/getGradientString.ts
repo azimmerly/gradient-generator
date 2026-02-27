@@ -1,12 +1,19 @@
-import type { ColorStop, GradientType } from "@/stores/gradient";
+import type {
+  ColorStop,
+  DirectionAngle,
+  GradientType,
+  RadialPosition,
+} from "@/types";
 
 export const getGradientString = ({
   type,
-  angle,
+  directionAngle,
+  radialPosition,
   stops,
 }: {
   type: GradientType;
-  angle: number;
+  directionAngle: DirectionAngle;
+  radialPosition: RadialPosition;
   stops: ColorStop[];
 }) => {
   if (stops.length === 0) {
@@ -18,6 +25,6 @@ export const getGradientString = ({
     .join(", ");
 
   return type === "linear"
-    ? `linear-gradient(${angle}deg, ${colorStops})`
-    : `radial-gradient(circle, ${colorStops})`;
+    ? `linear-gradient(${directionAngle}deg, ${colorStops})`
+    : `radial-gradient(circle at ${radialPosition}, ${colorStops})`;
 };

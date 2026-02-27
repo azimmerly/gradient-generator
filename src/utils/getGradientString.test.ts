@@ -8,18 +8,35 @@ const mockStops = [
 
 describe("getGradientString", () => {
   it("returns empty string for no stops", () => {
-    expect(getGradientString({ type: "linear", angle: 0, stops: [] })).toBe("");
+    expect(
+      getGradientString({
+        type: "linear",
+        directionAngle: 90,
+        radialPosition: "center",
+        stops: [],
+      }),
+    ).toBe("");
   });
 
   it("generates a linear gradient string", () => {
     expect(
-      getGradientString({ type: "linear", angle: 90, stops: mockStops }),
+      getGradientString({
+        type: "linear",
+        directionAngle: 90,
+        radialPosition: "center",
+        stops: mockStops,
+      }),
     ).toBe("linear-gradient(90deg, #aaa 0%, #bbb 50%, #ccc 100%)");
   });
 
   it("generates a radial gradient string", () => {
     expect(
-      getGradientString({ type: "radial", angle: 90, stops: mockStops }),
-    ).toBe("radial-gradient(circle, #aaa 0%, #bbb 50%, #ccc 100%)");
+      getGradientString({
+        type: "radial",
+        directionAngle: 90,
+        radialPosition: "center",
+        stops: mockStops,
+      }),
+    ).toBe("radial-gradient(circle at center, #aaa 0%, #bbb 50%, #ccc 100%)");
   });
 });

@@ -6,10 +6,8 @@ import { HexColorInput } from "react-colorful";
 import { twMerge } from "tailwind-merge";
 import { useShallow } from "zustand/shallow";
 
-import {
-  useGradientStore,
-  type ColorStop as ColorStopType,
-} from "@/stores/gradient";
+import { useGradientStore } from "@/stores/gradient";
+import type { ColorStop as ColorStopType } from "@/types";
 
 type ColorStopProps = {
   stop: ColorStopType;
@@ -60,7 +58,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
       }}
       className={twMerge(
         "flex w-fit items-center gap-1 rounded-lg px-3 py-2",
-        isSelected && "bg-gray-200 shadow-xs",
+        isSelected && "bg-mist-200 shadow-xs",
         isDragging && (isSelected ? "z-50 shadow-md" : "z-50"),
       )}
     >
@@ -72,19 +70,19 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
           {...listeners}
           {...attributes}
           aria-label="grab color stop"
-          className="-mr-1 cursor-grab touch-none rounded p-0.5 text-gray-400 transition hover:text-gray-500 active:cursor-grabbing"
+          className="-mr-1 cursor-grab touch-none rounded p-0.5 text-mist-400 transition hover:text-mist-500 active:cursor-grabbing"
         >
           <ChevronUpDownIcon className="size-5" />
         </Button>
         <div
-          className="size-7 rounded outline-1 outline-gray-200"
+          className="size-7 rounded outline-1 outline-mist-200"
           style={{ background: stop.color }}
         />
         <Field className="font-code relative text-sm">
           <label className="sr-only" htmlFor={`color-${stop.id}`}>
             Color hex
           </label>
-          <span className="pointer-events-none absolute top-1/2 left-2 -translate-y-1/2 text-gray-500/80">
+          <span className="pointer-events-none absolute top-1/2 left-2 -translate-y-1/2 text-mist-500/80">
             #
           </span>
           <HexColorInput
@@ -92,7 +90,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
             disabled={isDragging}
             color={stop.color}
             onChange={handleUpdateColor}
-            className="w-20 rounded bg-white p-1 pl-5 text-left outline-1 outline-gray-200 transition focus:outline-gray-500"
+            className="w-20 rounded bg-white p-1 pl-5 text-left outline-1 outline-mist-200 transition focus:outline-mist-500"
           />
         </Field>
         <Field className="font-code relative text-sm">
@@ -104,9 +102,9 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
             disabled={isDragging}
             value={stop.position}
             onChange={handleUpdatePosition}
-            className="w-12.5 cursor-text rounded bg-white p-1 pr-5 text-right outline-1 outline-gray-200 transition focus:outline-gray-500"
+            className="w-12.5 cursor-text rounded bg-white p-1 pr-5 text-right outline-1 outline-mist-200 transition focus:outline-mist-500"
           />
-          <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-gray-500/80">
+          <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-mist-500/80">
             %
           </span>
         </Field>
@@ -117,15 +115,15 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
         aria-label="remove color stop"
         className={twMerge(
           "ml-1.5 h-fit rounded-full",
-          disableRemove ? "cursor-not-allowed" : "cursor-pointer",
+          disableRemove ? "cursor-default" : "cursor-pointer",
         )}
       >
         <XMarkIcon
           className={twMerge(
             "size-5 transition",
             disableRemove
-              ? "text-gray-400/60"
-              : "text-gray-400 hover:text-gray-500",
+              ? "text-mist-400/60"
+              : "text-mist-400 hover:text-mist-500",
           )}
         />
       </Button>

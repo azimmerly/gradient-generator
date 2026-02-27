@@ -3,8 +3,7 @@ import {
   CheckCircleIcon,
   DocumentDuplicateIcon,
 } from "@heroicons/react/24/outline";
-import copy from "copy-to-clipboard";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import { useGradientStore } from "@/stores/gradient";
@@ -13,12 +12,14 @@ import { getGradientString } from "@/utils/getGradientString";
 export const GradientPreview = () => {
   const { type, angle, stops } = useGradientStore();
   const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const gradientCSS = getGradientString({ type, angle, stops });
 
   const handleCopy = () => {
     setCopied(true);
-    copy(`background: ${gradientCSS};`);
-    setTimeout(() => setCopied(false), 1200);
+    navigator.clipboard.writeText(`background: ${gradientCSS};`);
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setCopied(false), 1000);
   };
 
   return (

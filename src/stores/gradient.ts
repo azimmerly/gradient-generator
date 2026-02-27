@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid/non-secure";
 import { create } from "zustand";
 
 import { getRandomColor } from "@/utils/getRandomColor";
@@ -26,9 +25,9 @@ type GradientStore = {
 };
 
 const initialStops: ColorStop[] = [
-  { id: nanoid(), color: "#2fb1bf", position: 0 },
-  { id: nanoid(), color: "#eafbca", position: 40 },
-  { id: nanoid(), color: "#6082f8", position: 80 },
+  { id: crypto.randomUUID(), color: "#2fb1bf", position: 0 },
+  { id: crypto.randomUUID(), color: "#eafbca", position: 40 },
+  { id: crypto.randomUUID(), color: "#6082f8", position: 80 },
 ];
 
 export const useGradientStore = create<GradientStore>((set) => ({
@@ -48,7 +47,7 @@ export const useGradientStore = create<GradientStore>((set) => ({
   },
   addStop: () => {
     set((state) => {
-      const newStopId = nanoid();
+      const newStopId = crypto.randomUUID();
       const lastStop = state.stops[state.stops.length - 1];
       const newStop: ColorStop = {
         id: newStopId,

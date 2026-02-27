@@ -1,6 +1,5 @@
 import { Button } from "@headlessui/react";
-import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
 import diceImage from "@/assets/dice.png";
@@ -9,17 +8,19 @@ import { getRandomColor } from "@/utils/getRandomColor";
 
 export const RandomizeButton = () => {
   const [busy, setBusy] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const handleRandomize = () => {
     setBusy(true);
-    setTimeout(() => setBusy(false), 350);
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setBusy(false), 400);
 
     const angles = [0, 45, 90, 135, 180, 225, 270, 315] as const;
     const numStops = Math.random() > 0.5 ? 3 : 4;
     const positions = [0, 40, 80, 100].slice(0, numStops);
 
     const newStops = positions.map((position) => ({
-      id: nanoid(),
+      id: crypto.randomUUID(),
       color: getRandomColor(),
       position,
     }));

@@ -5,11 +5,11 @@ import { useGradientStore } from "@/stores/gradient";
 import { useDebouncedCallback } from "@/utils/useDebouncedCallback";
 
 export const ColorPicker = () => {
-  const { stops, updateStop, selectedStop } = useGradientStore(
-    useShallow((s) => ({
-      stops: s.stops,
-      updateStop: s.updateStop,
-      selectedStop: s.selectedStop,
+  const { currentColor, updateStop, selectedStop } = useGradientStore(
+    useShallow(({ stops, selectedStop, updateStop }) => ({
+      currentColor: stops.find(({ id }) => id === selectedStop)?.color,
+      updateStop: updateStop,
+      selectedStop: selectedStop,
     })),
   );
 
@@ -18,11 +18,9 @@ export const ColorPicker = () => {
     debouncedUpdateStop(selectedStop, { color });
   };
 
-  const currentStop = stops.find(({ id }) => id === selectedStop);
-
   return (
     <HexColorPicker
-      color={currentStop?.color}
+      color={currentColor}
       onChange={handleChange}
       className="mt-2 max-h-44 max-w-44 lg:mt-0"
     />

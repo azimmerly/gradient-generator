@@ -5,12 +5,20 @@ import {
 } from "@heroicons/react/24/outline";
 import { useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
+import { useShallow } from "zustand/shallow";
 
 import { useGradientStore } from "@/stores/gradient";
 import { getGradientString } from "@/utils/getGradientString";
 
 export const GradientPreview = () => {
-  const { type, directionAngle, radialPosition, stops } = useGradientStore();
+  const { type, directionAngle, radialPosition, stops } = useGradientStore(
+    useShallow(({ type, directionAngle, radialPosition, stops }) => ({
+      type,
+      directionAngle,
+      radialPosition,
+      stops,
+    })),
+  );
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
   const gradientCSS = getGradientString({

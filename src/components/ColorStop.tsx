@@ -14,10 +14,10 @@ type ColorStopProps = {
 };
 
 export const ColorStop = ({ stop }: ColorStopProps) => {
-  const { stops, updateStop, removeStop, selectedStop, setSelectedStop } =
+  const { stopsLength, updateStop, removeStop, selectedStop, setSelectedStop } =
     useGradientStore(
       useShallow((s) => ({
-        stops: s.stops,
+        stopsLength: s.stops.length,
         updateStop: s.updateStop,
         removeStop: s.removeStop,
         selectedStop: s.selectedStop,
@@ -46,7 +46,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
     updateStop(stop.id, { color });
   };
 
-  const disableRemove = stops.length <= 2;
+  const disableRemove = stopsLength <= 2;
   const isSelected = selectedStop === stop.id;
 
   return (
@@ -102,7 +102,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
             disabled={isDragging}
             value={stop.position}
             onChange={handleUpdatePosition}
-            className="w-12.5 cursor-text rounded bg-white p-1 pr-5 text-right outline-1 outline-mist-200 transition focus:outline-mist-500"
+            className="w-12.5 cursor-text rounded bg-white p-1 pr-4.75 text-right outline-1 outline-mist-200 transition focus:outline-mist-500"
           />
           <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-mist-500/80">
             %

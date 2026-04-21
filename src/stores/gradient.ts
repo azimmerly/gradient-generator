@@ -1,22 +1,13 @@
 import { create } from "zustand";
 
-import type {
-  ColorStop,
-  DirectionAngle,
-  GradientType,
-  RadialPosition,
-} from "@/types";
+import type { ColorStop, GradientState } from "@/types";
 import { getRandomColor } from "@/utils/getRandomColor";
 
-type GradientStore = {
-  type: GradientType;
-  directionAngle: DirectionAngle;
-  radialPosition: RadialPosition;
-  stops: ColorStop[];
+type GradientStore = GradientState & {
   selectedStop: string;
-  setType: (type: GradientType) => void;
-  setDirectionAngle: (angle: DirectionAngle) => void;
-  setRadialPosition: (position: RadialPosition) => void;
+  setType: (type: GradientState["type"]) => void;
+  setDirectionAngle: (angle: GradientState["directionAngle"]) => void;
+  setRadialPosition: (position: GradientState["radialPosition"]) => void;
   setSelectedStop: (id: string) => void;
   updateStop: (id: string, partialStop: Partial<ColorStop>) => void;
   addStop: () => void;
@@ -24,18 +15,20 @@ type GradientStore = {
   reorderStops: (ids: string[]) => void;
 };
 
-const initialStops: ColorStop[] = [
-  { id: crypto.randomUUID(), color: "#2fb1bf", position: 0 },
-  { id: crypto.randomUUID(), color: "#eafbca", position: 40 },
-  { id: crypto.randomUUID(), color: "#6082f8", position: 80 },
-];
-
-export const useGradientStore = create<GradientStore>((set) => ({
+const initialState: GradientState = {
   type: "linear",
   directionAngle: 135,
   radialPosition: "center",
-  stops: initialStops,
-  selectedStop: initialStops[0].id,
+  stops: [
+    { id: crypto.randomUUID(), color: "#2fb1bf", position: 0 },
+    { id: crypto.randomUUID(), color: "#eafbca", position: 40 },
+    { id: crypto.randomUUID(), color: "#6082f8", position: 80 },
+  ],
+};
+
+export const useGradientStore = create<GradientStore>((set) => ({
+  ...initialState,
+  selectedStop: initialState.stops[0].id,
   setType: (type) => set({ type }),
   setDirectionAngle: (directionAngle) => set({ directionAngle }),
   setRadialPosition: (radialPosition) => set({ radialPosition }),

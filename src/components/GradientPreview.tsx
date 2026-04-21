@@ -1,14 +1,10 @@
-import { Button } from "@headlessui/react";
-import {
-  CheckCircleIcon,
-  DocumentDuplicateIcon,
-} from "@heroicons/react/24/outline";
-import { useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
+import { DocumentDuplicateIcon } from "@heroicons/react/24/outline";
 import { useShallow } from "zustand/shallow";
 
+import { CopyButton } from "@/components/CopyButton";
 import { useGradientStore } from "@/stores/gradient";
 import { getGradientString } from "@/utils/getGradientString";
+import { useCopy } from "@/utils/useCopy";
 
 export const GradientPreview = () => {
   const { type, directionAngle, radialPosition, stops } = useGradientStore(
@@ -19,8 +15,7 @@ export const GradientPreview = () => {
       stops,
     })),
   );
-  const [copied, setCopied] = useState(false);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
   const gradientCSS = getGradientString({
     type,
     stops,
@@ -28,16 +23,8 @@ export const GradientPreview = () => {
     radialPosition,
   });
 
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(`background: ${gradientCSS};`);
-      setCopied(true);
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => setCopied(false), 1000);
-    } catch {
-      setCopied(false);
-    }
-  };
+  const { copied: copiedCss, copy: copyCss } = useCopy();
+  const copyCssText = () => copyCss(() => `background: ${gradientCSS};`);
 
   return (
     <div
@@ -49,31 +36,13 @@ export const GradientPreview = () => {
           <span className="text-orange-200">background: </span>
           <span className="text-white">{gradientCSS};</span>
         </pre>
-        <Button
-          onClick={handleCopy}
-          disabled={copied}
-          className={twMerge(
-            "flex w-full transform-gpu items-center justify-center gap-1 rounded-md bg-white px-6 py-2.5 text-[13px] font-semibold shadow transition will-change-transform lg:py-3 lg:text-sm",
-            copied
-              ? "animate-scale-bounce cursor-default opacity-92"
-              : "cursor-pointer hover:opacity-92 active:scale-99",
-          )}
-        >
-          {copied ? (
-            <>
-              <CheckCircleIcon
-                strokeWidth={2.5}
-                className="size-4.25 text-emerald-500"
-              />
-              Copied CSS code!
-            </>
-          ) : (
-            <>
-              <DocumentDuplicateIcon strokeWidth={2.1} className="size-4.25" />
-              Copy to clipboard
-            </>
-          )}
-        </Button>
+        <CopyButton
+          copied={copiedCss}
+          onCopy={copyCssText}
+          icon={DocumentDuplicateIcon}
+          label="Copy to clipboard"
+          copiedLabel="Copied CSS code!"
+        />
       </div>
     </div>
   );

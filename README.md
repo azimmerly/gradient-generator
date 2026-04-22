@@ -1,3 +1,8 @@
 # Gradient Generator
 
-A simple and intuitive CSS gradient generator. Gradients can be customized using draggable color stops and set to either linear or radial style, with a live preview. The generated CSS code can then be copied to the clipboard.
+A CSS gradient generator with live preview. Customize linear or radial gradients using draggable color stops, randomize for inspiration, then copy the generated CSS or share a permalink with your exact gradient configuration.
+
+## Local Development
+
+1. Install dependencies: `npm install`
+2. Start the dev server: `npm run dev`

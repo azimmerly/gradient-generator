@@ -13,15 +13,15 @@ type CopyButtonProps = {
 export const CopyButton = ({
   copied,
   onCopy,
-  icon: Icon,
   label,
   copiedLabel,
+  icon: Icon,
 }: CopyButtonProps) => (
   <Button
     onClick={onCopy}
     disabled={copied}
     className={twMerge(
-      "flex flex-1 transform-gpu items-center justify-center gap-1 rounded-md bg-white px-6 py-2.5 text-[13px] font-semibold shadow transition will-change-transform lg:py-3 lg:text-sm",
+      "flex flex-1 transform-gpu items-center justify-center gap-1 rounded bg-white p-2.5 text-[13px] font-semibold shadow transition will-change-transform",
       copied
         ? "animate-scale-bounce cursor-default opacity-92"
         : "cursor-pointer hover:opacity-92 active:scale-99",
@@ -29,15 +29,12 @@ export const CopyButton = ({
   >
     {copied ? (
       <>
-        <CheckCircleIcon
-          strokeWidth={2.5}
-          className="size-4.25 text-emerald-500"
-        />
+        <CheckCircleIcon strokeWidth={2} className="size-4 text-emerald-600" />
         {copiedLabel}
       </>
     ) : (
       <>
-        <Icon strokeWidth={2.1} className="size-4.25" />
+        <Icon strokeWidth={2} className="size-4" />
         {label}
       </>
     )}

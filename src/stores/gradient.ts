@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 import type { ColorStop, GradientState } from "@/types";
 import { getRandomColor } from "@/utils/getRandomColor";
+import { parseGradientUrl } from "@/utils/gradientUrl";
 
 type GradientStore = GradientState & {
   selectedStop: string;
@@ -15,7 +16,9 @@ type GradientStore = GradientState & {
   reorderStops: (ids: string[]) => void;
 };
 
-const initialState: GradientState = {
+const initialState: GradientState = parseGradientUrl(
+  window.location.search,
+) ?? {
   type: "linear",
   directionAngle: 135,
   radialPosition: "center",

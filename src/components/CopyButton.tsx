@@ -21,7 +21,7 @@ export const CopyButton = ({
     onClick={onCopy}
     disabled={copied}
     className={twMerge(
-      "flex flex-1 transform-gpu items-center justify-center gap-1 rounded bg-white p-2.5 text-[13px] font-semibold shadow transition will-change-transform",
+      "flex flex-1 transform-gpu items-center justify-center gap-1 rounded-md bg-white p-2.5 text-[13px] font-semibold shadow transition will-change-transform",
       copied
         ? "animate-scale-bounce cursor-default opacity-92"
         : "cursor-pointer hover:opacity-92 active:scale-99",

@@ -1,5 +1,6 @@
 import { create } from "zustand";
 
+import { MAX_STOPS } from "@/consts";
 import type { ColorStop, GradientState } from "@/types";
 import { getRandomColor } from "@/utils/getRandomColor";
 import { parseGradientUrl } from "@/utils/gradientUrl";
@@ -45,6 +46,9 @@ export const useGradientStore = create<GradientStore>((set) => ({
   },
   addStop: () => {
     set((state) => {
+      if (state.stops.length >= MAX_STOPS) {
+        return state;
+      }
       const newStopId = crypto.randomUUID();
       const lastStop = state.stops[state.stops.length - 1];
       const newStop: ColorStop = {

@@ -1,4 +1,9 @@
-import { DIRECTION_ANGLES, GRADIENT_TYPES, RADIAL_POSITIONS } from "@/consts";
+import {
+  DIRECTION_ANGLES,
+  GRADIENT_TYPES,
+  MAX_STOPS,
+  RADIAL_POSITIONS,
+} from "@/consts";
 import type {
   DirectionAngle,
   GradientState,
@@ -57,6 +62,7 @@ export const parseGradientUrl = (search: string) => {
 
   if (
     stops.length < 2 ||
+    stops.length > MAX_STOPS ||
     stops.some((s) => !/^#[0-9a-fA-F]{6}$/.test(s.color)) ||
     stops.some((s) => isNaN(s.position) || s.position < 0 || s.position > 100)
   ) {

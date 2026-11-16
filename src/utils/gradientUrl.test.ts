@@ -134,6 +134,14 @@ describe("parseGradientUrl", () => {
     ).toBeNull();
   });
 
+  it("returns null for more than the maximum number of stops", () => {
+    expect(
+      parseGradientUrl(
+        "?type=linear&angle=135&stops=ff0000:0,00ff00:25,0000ff:50,ffff00:75,ff00ff:100",
+      ),
+    ).toBeNull();
+  });
+
   it("returns null for invalid color", () => {
     expect(
       parseGradientUrl("?type=linear&angle=135&stops=gggggg:0,0000ff:100"),

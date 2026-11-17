@@ -45,6 +45,14 @@ describe("useGradientUrl", () => {
     );
   });
 
+  it("does not touch the URL when the change doesn't affect it", () => {
+    renderHook(() => useGradientUrl());
+    const callCount = vi.mocked(history.replaceState).mock.calls.length;
+
+    act(() => useGradientStore.getState().setSelectedStop("2"));
+    expect(vi.mocked(history.replaceState).mock.calls.length).toBe(callCount);
+  });
+
   it("stops updating the URL after unmount", () => {
     const { unmount } = renderHook(() => useGradientUrl());
     unmount();

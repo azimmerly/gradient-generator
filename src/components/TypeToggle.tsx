@@ -11,14 +11,18 @@ export const TypeToggle = () => {
   );
 
   return (
-    <div className="divide-x divide-mist-200 overflow-hidden rounded-md border border-mist-200 shadow-xs">
+    <div
+      role="group"
+      aria-label="Gradient Type"
+      className="grid w-67.5 grid-cols-2 divide-x divide-mist-200 overflow-hidden rounded-lg border border-mist-200 shadow-xs lg:w-45"
+    >
       {GRADIENT_TYPES.map((type) => (
         <Button
           key={type}
-          disabled={currentType === type}
-          onClick={() => setType(type)}
+          aria-pressed={currentType === type}
+          onClick={() => currentType !== type && setType(type)}
           className={twMerge(
-            "w-18 bg-white py-1.75 text-sm capitalize transition-colors",
+            "h-9 bg-white text-sm capitalize transition-colors",
             currentType === type
               ? "bg-mist-100 font-semibold"
               : "cursor-pointer hover:bg-mist-50",

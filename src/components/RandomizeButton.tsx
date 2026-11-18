@@ -39,7 +39,7 @@ export const RandomizeButton = () => {
       disabled={busy}
       onClick={handleRandomize}
       className={twMerge(
-        "mt-0.5 flex w-fit items-center gap-1.5 rounded-md bg-white px-4 py-2 text-[13px] font-semibold text-mist-700 shadow-xs ring-1 ring-mist-200 transition will-change-transform ring-inset hover:bg-mist-50",
+        "flex h-9 w-67.5 items-center justify-center gap-1.5 rounded-lg bg-white text-sm font-semibold text-mist-700 shadow-xs ring-1 ring-mist-200 transition will-change-transform ring-inset hover:bg-mist-50 lg:w-45",
         busy
           ? "cursor-default bg-mist-50"
           : "cursor-pointer active:translate-y-px active:scale-99",

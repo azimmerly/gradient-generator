@@ -35,11 +35,9 @@ export const Select = <T,>({
       onChange={onChange}
       className="flex flex-col gap-0.5"
     >
-      <Label className="hidden text-center text-sm text-mist-500 lg:inline">
-        {label}
-      </Label>
+      <Label className="sr-only">{label}</Label>
       <div className="relative">
-        <ListboxButton className="group relative w-45 rounded-md bg-white py-1.5 pr-10 pl-3 text-left text-sm/6 shadow-xs ring-1 ring-mist-200 ring-inset">
+        <ListboxButton className="group relative h-9 w-67.5 rounded-lg bg-white py-1.5 pr-10 pl-3 text-left text-sm/6 shadow-xs ring-1 ring-mist-200 ring-inset lg:w-45">
           <div className="flex items-center gap-1.5">
             <SelectedOptionIcon className="size-4 text-mist-400" />
             <span className="block truncate">{selectedOptionLabel}</span>

@@ -9,6 +9,7 @@ import { PlusIcon } from "@heroicons/react/16/solid";
 import { useShallow } from "zustand/shallow";
 
 import { ColorStop } from "@/components/ColorStop";
+import { MAX_STOPS } from "@/consts";
 import { useGradientStore } from "@/stores/gradient";
 
 export const ColorStops = () => {
@@ -51,10 +52,10 @@ export const ColorStops = () => {
           </ul>
         </SortableContext>
       </DndContext>
-      {stops.length < 4 && (
+      {stops.length < MAX_STOPS && (
         <Button
           onClick={addStop}
-          className="mt-1.5 flex w-fit cursor-pointer items-center gap-1 rounded-md px-2 py-1 text-sm font-semibold text-blue-600 transition-opacity hover:opacity-80"
+          className="mt-1.5 flex h-9 w-67.5 cursor-pointer items-center justify-center gap-1 rounded-lg border border-dashed border-mist-300 text-sm font-semibold text-blue-600 transition-colors hover:border-mist-400 hover:bg-mist-50"
         >
           <PlusIcon className="size-4" />
           Add color

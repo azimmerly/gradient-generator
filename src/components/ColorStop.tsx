@@ -58,13 +58,14 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
       }}
       className={twMerge(
         "flex w-fit items-center gap-1 rounded-lg px-3 py-2",
-        isSelected && "bg-mist-200 shadow-xs",
+        isSelected && "bg-mist-200/60 shadow-xs",
         isDragging && (isSelected ? "z-50 shadow-md" : "z-50"),
       )}
     >
       <div
         className="flex items-center gap-3"
         onClick={() => setSelectedStop(stop.id)}
+        onFocus={() => setSelectedStop(stop.id)}
       >
         <Button
           {...listeners}
@@ -75,7 +76,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
           <ChevronUpDownIcon className="size-5" />
         </Button>
         <div
-          className="size-7 rounded outline-1 outline-mist-200"
+          className="size-7.5 rounded-md outline-1 outline-mist-200"
           style={{ background: stop.color }}
         />
         <Field className="font-code relative text-sm">
@@ -90,7 +91,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
             disabled={isDragging}
             color={stop.color}
             onChange={handleUpdateColor}
-            className="w-20 rounded bg-white p-1 pl-5 text-left outline-1 outline-mist-200 transition focus:outline-mist-500"
+            className="h-7.5 w-20 rounded-md bg-white p-1 pl-5 text-left outline-1 outline-mist-200 transition focus:outline-mist-500"
           />
         </Field>
         <Field className="font-code relative text-sm">
@@ -102,7 +103,7 @@ export const ColorStop = ({ stop }: ColorStopProps) => {
             disabled={isDragging}
             value={stop.position}
             onChange={handleUpdatePosition}
-            className="w-12.5 cursor-text rounded bg-white p-1 pr-4.75 text-right outline-1 outline-mist-200 transition focus:outline-mist-500"
+            className="h-7.5 w-12.5 cursor-text rounded-md bg-white p-1 pr-4.75 text-right outline-1 outline-mist-200 transition focus:outline-mist-500"
           />
           <span className="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 text-mist-500/80">
             %

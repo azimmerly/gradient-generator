@@ -19,14 +19,14 @@
     100% {
       transform: scale(1);
     }
-    40% {
-      transform: scale(1.02);
+    20% {
+      transform: scale(0.96);
     }
-    60% {
-      transform: scale(0.98);
+    50% {
+      transform: scale(1.03);
     }
-    90% {
-      transform: scale(1.01);
+    75% {
+      transform: scale(0.99);
     }
   }
 
@@ -50,7 +50,7 @@
   }
 
   .animate-scale-bounce {
-    animation: scale-bounce 350ms ease-out;
+    animation: scale-bounce 320ms ease-in-out;
   }
 
   .animate-shake {

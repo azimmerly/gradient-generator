@@ -1,5 +1,4 @@
 import { Button } from "@headlessui/react";
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { twMerge } from "tailwind-merge";
 
 type CopyButtonProps = {
@@ -7,36 +6,25 @@ type CopyButtonProps = {
   onCopy: () => void;
   icon: React.ElementType;
   label: string;
-  copiedLabel: string;
 };
 
 export const CopyButton = ({
   copied,
   onCopy,
   label,
-  copiedLabel,
   icon: Icon,
 }: CopyButtonProps) => (
   <Button
     onClick={onCopy}
     disabled={copied}
     className={twMerge(
-      "flex flex-1 transform-gpu items-center justify-center gap-1 rounded-md bg-white p-2.5 text-[13px] font-semibold shadow transition will-change-transform",
+      "flex h-9 w-36 transform-gpu items-center justify-center gap-1.5 rounded-lg bg-white text-sm font-semibold shadow-xs ring-1 ring-mist-200 transition will-change-transform ring-inset",
       copied
-        ? "animate-scale-bounce cursor-default opacity-92"
+        ? "animate-scale-bounce cursor-default text-emerald-600"
         : "cursor-pointer hover:opacity-92 active:scale-99",
     )}
   >
-    {copied ? (
-      <>
-        <CheckCircleIcon strokeWidth={2} className="size-4 text-emerald-600" />
-        {copiedLabel}
-      </>
-    ) : (
-      <>
-        <Icon strokeWidth={2} className="size-4" />
-        {label}
-      </>
-    )}
+    <Icon strokeWidth={2} className="size-4" />
+    {label}
   </Button>
 );
